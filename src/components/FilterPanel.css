@@ -1,0 +1,283 @@
+/* src/components/FilterPanel.css */
+
+.filter-panel-wrapper {
+  margin-bottom: 2rem;
+  /* On desktop, this wrapper will be placed in a grid column */
+}
+
+/* Toggle button for mobile */
+.filter-toggle-button {
+  display: none; /* Hidden by default on larger screens */
+  width: 100%;
+  text-align: left;
+  background-color: #2D3748;
+  color: #EDF2F7;
+  border: 1px solid #4A5568;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* Space between toggle button and panel when open */
+}
+
+.filter-toggle-button .toggle-icon {
+  margin-left: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.filter-toggle-button.open .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.filter-panel {
+  background: linear-gradient(145deg, #1A202C 0%, #2D3748 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border: 1px solid #4A5568;
+  /* NO transform transition here, as we are animating children */
+  position: relative; /* Ensure z-index works */
+  z-index: 1; /* A small z-index to bring it above default content, but below header/toasts */
+
+  /* --- CRUCIAL FOR 3D EFFECT ON CHILDREN --- */
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.filter-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #E2E8F0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* --- ANIMATION APPLIED TO .form-group --- */
+.form-group {
+  margin-bottom: 1.2rem;
+  background: linear-gradient(#00000005, #0000), #1A202C; /* Adjusted for dark theme */
+  border-radius: 0.5rem; /* Slightly rounded corners for each group */
+  padding: 0.8rem 1rem; /* Padding inside the group for content */
+  box-shadow: inset 0 0 1rem -0.5rem rgba(0, 0, 0, 0.2);
+  transition: transform 0.35s, box-shadow 0.35s, background 0.35s;
+  transform: translate3d(0, 0, 0); /* Initial state for 3D transform */
+  position: relative; /* For z-index if needed */
+  z-index: 0; /* Base z-index for form groups */
+  opacity: 0; /* Initial state for staggered animation */
+  animation:
+      firstShow 0.5s ease-in-out forwards, /* First animation: jump forward then back */
+      show 0.15s linear forwards; /* Second animation: fade in */
+
+  /* Staggering (adjust delays in JSX or add more here if needed) */
+  &:nth-child(1) { animation-delay: 0.50s; }
+  &:nth-child(2) { animation-delay: 0.60s; }
+  &:nth-child(3) { animation-delay: 0.70s; }
+  &:nth-child(4) { animation-delay: 0.80s; }
+  &:nth-child(5) { animation-delay: 0.90s; }
+  /* Ensure the apply button also animates */
+  &.form-actions { animation-delay: 1.00s; }
+
+
+  /* --- HOVER EFFECTS --- */
+  &:hover,
+  &:focus-within { /* Use focus-within for keyboard navigation */
+    transform: translate3d(0, 0, 3rem); /* Moves forward when hovered/focused */
+    box-shadow: inset 0 0 1.5rem -0.25rem rgba(0, 0, 0, 0.4), 0 0 2rem rgba(0,0,0,0.5); /* Stronger shadow */
+    background: linear-gradient(#00000010, #0000), #2D3748; /* Slight background change on hover */
+    z-index: 10; /* Bring hovered item to front */
+  }
+
+  /* --- Sibling Shadow Effects (using :has() and adjacent/general sibling selectors) --- */
+  /* Shadow from above for the element directly below the hovered/focused one */
+  &:hover + &,
+  &:focus-within + & {
+    box-shadow: inset 0 1rem 1rem -1rem rgba(0, 0, 0, 0.3);
+    transform: translate3d(0, 0, 2rem); /* Less pronounced than the hovered one */
+    z-index: 9; /* Slightly above non-hovered, below hovered */
+  }
+
+  /* Shadow from below for the element directly above the hovered/focused one */
+  &:has(+ &:hover),
+  &:has(+ &:focus-within) {
+    box-shadow: inset 0 -1rem 1rem -1rem rgba(0, 0, 0, 0.3);
+    z-index: 9; /* Slightly above non-hovered, below hovered */
+  }
+
+  /* Deeper shadows for elements two steps away from the hovered/focused one */
+  &:hover + & + &,
+  &:focus-within + & + & {
+    box-shadow: inset 0 1rem 0.5rem -0.75rem rgba(0, 0, 0, 0.2);
+    transform: translate3d(0, 0, 1rem); /* Even less pronounced */
+    z-index: 8;
+  }
+  &:has(+ & + &:hover),
+  &:has(+ & + &:focus-within) {
+    box-shadow: inset 0 -1rem 0.5rem -0.75rem rgba(0, 0, 0, 0.2);
+    z-index: 8;
+  }
+}
+
+
+/* Adjust form-label and input/select within the animated form-group */
+.form-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #CBD5E0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  /* Ensure label doesn't inherit background from form-group */
+  background: transparent;
+  position: relative; /* Ensure it's above input if z-index is messed with */
+  z-index: 2; /* To ensure label text is always on top */
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #4A5568;
+  background-color: #10141A; /* Keep input background dark */
+  color: #E2E8F0;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  outline: none;
+  /* Ensure these are not affected by parent's 3D transform */
+  transform: translateZ(0); /* Flatten them relative to their parent group */
+  position: relative;
+  z-index: 1; /* To ensure input field is clickable */
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #63B3ED;
+  background-color: #2D3748;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(99, 179, 237, 0.3);
+}
+
+.form-input::placeholder {
+  color: #A0AEC0;
+  opacity: 0.8;
+}
+
+.form-actions {
+  /* This div will also get the animation as it's a form-group */
+  /* Adjust margin for visual spacing relative to the animated groups */
+  margin-top: 2rem;
+  margin-bottom: 0; /* No bottom margin for the last element */
+}
+
+.apply-filters-button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #4299E1;
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid #4299E1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.apply-filters-button:hover {
+  background-color: #63B3ED;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  border-color: #63B3ED;
+}
+
+/* Keyframes for staggered entry animation */
+@keyframes firstShow {
+  0%, 100% { transform: perspective(1000px) translate3d(0, 0, 0em); }
+  50% { transform: perspective(1000px) translate3d(0, 0, 3em); }
+}
+
+@keyframes show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* Responsive styles for filter panel (Mobile breakpoint) */
+@media (max-width: 768px) {
+  .filter-panel {
+    /* Existing mobile styles */
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 2rem; /* Remove vertical padding when closed */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out, transform 0.4s ease-out, padding 0.4s ease-out;
+    pointer-events: none; /* Disable interaction when closed */
+  }
+
+  .filter-panel.open {
+    max-height: 700px; /* Increased from 500px/600px to 700px. Adjust if form content grows further. */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Show toggle button on small screens */
+  .filter-toggle-button {
+    display: flex; /* Use flex to align icon and text */
+  }
+
+  /* On mobile, might want to disable the 3D hover effect for simplicity/performance */
+  .form-group {
+    transform: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    animation: none !important; /* Disable initial animation on mobile too */
+    opacity: 1 !important; /* Ensure they are visible */
+  }
+
+  /* Remove all sibling effects on mobile */
+  .form-group:hover + &,
+  .form-group:focus-within + &,
+  .form-group:has(+ &:hover),
+  .form-group:has(+ &:focus-within),
+  .form-group:hover + & + &,
+  .form-group:focus-within + & + &,
+  .form-group:has(+ & + &:hover),
+  .form-group:has(+ & + &:focus-within) {
+      box-shadow: none !important;
+      transform: none !important;
+      z-index: auto !important;
+  }
+}
+
+
+/* Prevent animations/transitions if user prefers reduced motion */
+@media (prefers-reduced-motion) {
+    .filter-panel *,
+    .form-group * {
+        transition-duration: 0s !important;
+        animation-duration: 0s !important;
+    }
+    .form-group:hover,
+    .form-group:focus-within {
+        transform: none !important;
+        box-shadow: inset 0 0 1rem -0.5rem rgba(0, 0, 0, 0.2) !important;
+        background: linear-gradient(#00000005, #0000), #1A202C !important;
+    }
+    /* Disable all sibling effects */
+    .form-group + .form-group:hover,
+    .form-group:has(+ .form-group:hover),
+    .form-group + .form-group + .form-group:hover,
+    .form-group:has(+ .form-group + .form-group:hover),
+    .form-group:focus-within + .form-group,
+    .form-group:has(+ .form-group:focus-within),
+    .form-group:focus-within + .form-group + .form-group,
+    .form-group:has(+ .form-group + .form-group:focus-within) {
+        box-shadow: none !important;
+        transform: none !important;
+        z-index: auto !important;
+    }
+}

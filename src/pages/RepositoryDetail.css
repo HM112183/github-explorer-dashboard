@@ -1,0 +1,93 @@
+.repository-detail {
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid #4A5568;
+}
+
+.repo-detail-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  color: #EDF2F7;
+  letter-spacing: -0.02em;
+}
+
+.repo-detail-description {
+  font-size: 1.15rem;
+  color: #A0AEC0;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.repo-info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.repo-stars-info {
+  color: #ECC94B;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.repo-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.6rem;
+  fill: currentColor;
+}
+
+.repo-language-info,
+.repo-updated-info {
+  color: #CBD5E0;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.repo-link-container {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.github-link {
+  color: #63B3ED;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+  color: #90CDF4;
+  transform: translateY(-1px);
+}
+
+.charts-section {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .charts-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.chart-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #E2E8F0;
+  text-align: center;
+}

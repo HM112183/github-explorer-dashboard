@@ -1,0 +1,168 @@
+/* src/components/RepositoryCard.css */
+
+.repository-card {
+  background: linear-gradient(145deg, #1A202C 0%, #2D3748 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #2D3748;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.repository-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border-color: #4299E1;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.owner-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 0.85rem;
+  border: 2px solid #4A5568;
+}
+
+.repo-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #EDF2F7;
+  margin: 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repo-description {
+  font-size: 0.95rem;
+  color: #CBD5E0;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.repo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: #A0AEC0;
+  margin-bottom: 0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  background-color: #2D3748;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #4A5568;
+}
+
+.language-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+  border: 1px solid #555;
+}
+
+.card-actions {
+  display: flex;
+  /* Always side-by-side: Removed flex-wrap and flex-direction: column for mobile */
+  justify-content: space-between; /* Push buttons to opposite ends */
+  align-items: center;
+  gap: 0.8rem; /* Space between buttons if they get close */
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #4A5568;
+}
+
+/* Base style for all action buttons */
+.bookmark-button,
+.view-github-button {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-height: 40px;
+  flex-grow: 1; /* Allow buttons to grow and fill space */
+  max-width: calc(50% - 0.4rem); /* Ensure they don't grow past half with gap consideration */
+}
+
+/* Bookmark Button Specific Styles (Filled/Prominent) */
+.bookmark-button {
+  background-color: #4A5568; /* Default background */
+  color: #E2E8F0;
+  border: 1px solid #4A5568;
+  gap: 0.5rem;
+  /* Ensured distinct hover for bookmark */
+}
+
+.bookmark-button.bookmarked {
+  background-color: #E53E3E; /* Red for bookmarked */
+  border-color: #E53E3E;
+  color: white;
+}
+
+.bookmark-button:hover {
+  background-color: #63B3ED; /* Brighter blue on hover */
+  border-color: #63B3ED;
+  color: white;
+}
+
+.bookmark-button.bookmarked:hover {
+  background-color: #FC8181; /* Lighter red on hover for bookmarked */
+  border-color: #FC8181;
+}
+
+.bookmark-icon {
+  font-size: 1.1rem;
+}
+
+/* "View on GitHub" Button Styles (Ghost/Distinct) */
+.view-github-button {
+  background-color: transparent; /* Transparent background */
+  color: #90CDF4; /* Light blue text for contrast */
+  border: 2px solid #4299E1; /* **Thicker, distinct blue border** */
+  /* Added a distinct blue shadow for visibility */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.view-github-button:hover {
+  background-color: #4299E1; /* Fill with primary blue on hover */
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Removed all previous @media (max-width: 480px) rules for .card-actions and buttons
+   to ensure they always stay side-by-side. */

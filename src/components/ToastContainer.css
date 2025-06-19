@@ -1,0 +1,11 @@
+/* src/components/ToastContainer.css */
+.toast-container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000; /* Ensure it's on top of other content */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Stack toasts from top-right down */
+  max-width: 350px; /* Limit width */
+}

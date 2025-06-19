@@ -1,0 +1,142 @@
+/* Basic Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  line-height: 1.5;
+  color: #333;
+  background-color: #f3f4f6; /* Light gray background */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Container for main content */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Utility classes for spacing and layout (minimal, use component-specific for complex) */
+.flex { display: flex; }
+.justify-between { justify-content: space-between; }
+.items-center { align-items: center; }
+.space-x-4 > *:not(:first-child) { margin-left: 1rem; }
+.grid { display: grid; }
+.gap-6 { gap: 1.5rem; } /* 24px */
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+
+/* Basic button styles */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.375rem; /* 6px */
+  font-weight: 600; /* semibold */
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Input/Select/Textarea base styles */
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.375rem; /* 6px */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  padding: 0.5rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Typography base */
+h1 { font-size: 2.25rem; /* 36px */ line-height: 2.5rem; /* 40px */ font-weight: 700; /* bold */ }
+h2 { font-size: 1.5rem; /* 24px */ line-height: 2rem; /* 32px */ font-weight: 600; /* semibold */ }
+p { font-size: 1rem; }
+.text-sm { font-size: 0.875rem; /* 14px */ }
+.text-xl { font-size: 1.25rem; /* 20px */ line-height: 1.75rem; /* 28px */ }
+.text-2xl { font-size: 1.5rem; /* 24px */ line-height: 2rem; /* 32px */ }
+.text-3xl { font-size: 1.875rem; /* 30px */ line-height: 2.25rem; /* 36px */ }
+.text-4xl { font-size: 2.25rem; /* 36px */ line-height: 2.5rem; /* 40px */ }
+
+/* Colors */
+.text-white { color: #fff; }
+.text-gray-100 { color: #f3f4f6; }
+.text-gray-500 { color: #6b7280; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-700 { color: #374151; }
+.text-gray-800 { color: #1f2937; }
+.text-gray-900 { color: #111827; }
+.text-yellow-500 { color: #f59e0b; }
+.text-blue-200 { color: #bfdbfe; }
+.text-blue-500 { color: #3b82f6; }
+.text-blue-600 { color: #2563eb; }
+.text-blue-700 { color: #1d4ed8; }
+.text-red-500 { color: #ef4444; }
+.text-red-600 { color: #dc2626; }
+.text-red-700 { color: #b91c1c; }
+.text-green-500 { color: #22c55e; }
+.text-green-600 { color: #16a34a; }
+.text-purple-500 { color: #a855f7; }
+.text-purple-600 { color: #9333ea; }
+
+/* Backgrounds */
+.bg-gray-100 { background-color: #f3f4f6; }
+.bg-gray-50 { background-color: #f9fafb; }
+.bg-white { background-color: #fff; }
+.bg-blue-600 { background-color: #2563eb; }
+.bg-gray-800 { background-color: #1f2937; }
+.bg-blue-500 { background-color: #3b82f6; }
+.bg-green-500 { background-color: #22c55e; }
+.bg-purple-500 { background-color: #a855f7; }
+.bg-red-100 { background-color: #fee2e2; }
+
+/* Shadows and Borders */
+.shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+.shadow-inner { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); }
+.rounded-lg { border-radius: 0.5rem; /* 8px */ }
+.rounded-md { border-radius: 0.375rem; /* 6px */ }
+.border { border-width: 1px; }
+.border-red-400 { border-color: #f87171; }
+.border-blue-500 { border-color: #3b82f6; }
+
+/* Flex utilities */
+.flex-col { flex-direction: column; }
+.flex-grow { flex-grow: 1; }
+
+/* Text Alignment */
+.text-center { text-align: center; }
+
+/* Responsive Grid (simplified for this example) */
+@media (min-width: 768px) { /* md breakpoint */
+  .md-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .lg-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

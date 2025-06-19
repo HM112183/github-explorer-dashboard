@@ -1,0 +1,66 @@
+/* src/components/Toast.css */
+.toast {
+  position: relative;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #EDF2F7;
+  transform: translateX(100%); /* Start off-screen */
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Slide and fade */
+}
+
+.toast.toast-show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast.toast-hide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.toast-success {
+  background-color: #2D3748; /* Dark background */
+  border: 1px solid #38A169; /* Green border */
+  color: #68D391; /* Light green text */
+}
+
+.toast-error {
+  background-color: #2D3748; /* Dark background */
+  border: 1px solid #E53E3E; /* Red border */
+  color: #FC8181; /* Light red text */
+}
+
+.toast-info {
+  background-color: #2D3748; /* Dark background */
+  border: 1px solid #4299E1; /* Blue border */
+  color: #90CDF4; /* Light blue text */
+}
+
+.toast-icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.toast-dismiss-btn {
+  background: none;
+  border: none;
+  color: #A0AEC0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.2s ease;
+  padding: 0.2rem 0.5rem; /* Make clickable area larger */
+}
+
+.toast-dismiss-btn:hover {
+  color: #E2E8F0;
+}

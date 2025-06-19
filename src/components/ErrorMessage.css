@@ -1,0 +1,28 @@
+.error-message {
+  background-color: #311111;
+  border: 1px solid #E53E3E;
+  color: #FC8181;
+  padding: 1.2rem;
+  border-radius: 8px;
+  position: relative;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.error-bold {
+  font-weight: 700;
+  color: #E53E3E;
+  margin-right: 0.5rem;
+}
+
+.error-text {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .error-text {
+    display: inline;
+  }
+}

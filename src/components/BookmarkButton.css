@@ -1,0 +1,62 @@
+.bookmark-button {
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  display: flex; /* Make it a flex container to align icon and text */
+  align-items: center; /* Vertically center icon and text */
+  justify-content: center; /* Horizontally center content */
+}
+
+.bookmark-button .bookmark-icon {
+    margin-right: 0.4rem; /* Space between icon and text */
+    font-size: 1.1em; /* Slightly larger icon */
+}
+
+.bookmark-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.4s ease;
+  pointer-events: none;
+}
+
+.bookmark-button:hover::before {
+  left: 0;
+}
+
+.bookmark-button.bookmarked {
+  background-color: #E53E3E;
+  color: white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #E53E3E;
+}
+
+.bookmark-button.bookmarked:hover {
+  background-color: #FC8181;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  border-color: #FC8181;
+}
+
+.bookmark-button.not-bookmarked {
+  background-color: #2D3748;
+  color: #CBD5E0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #4A5568;
+}
+
+.bookmark-button.not-bookmarked:hover {
+  background-color: #3C4A5E;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  border-color: #63B3ED;
+}

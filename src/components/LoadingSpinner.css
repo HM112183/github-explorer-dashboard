@@ -1,0 +1,32 @@
+.loading-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  border-radius: 50%;
+  height: 3.5rem;
+  width: 3.5rem;
+  border: 5px solid rgba(66, 153, 225, 0.3);
+  border-top-color: #63B3ED;
+  box-shadow: 0 0 15px rgba(99, 179, 237, 0.6);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-left: 1.2rem;
+  color: #CBD5E0;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px rgba(99, 179, 237, 0.3);
+}
