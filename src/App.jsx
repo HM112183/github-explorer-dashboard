@@ -87,12 +87,6 @@ function App() {
                 <Route path="/repository/:owner/:repoName" element={<RepositoryDetail />} />
               </Routes>
             </main>
-
-            <footer className="app-footer">
-              <div className="container">
-                <p>&copy; {new Date().getFullYear()} GitHub Explorer. All rights reserved.</p>
-              </div>
-            </footer>
           </div>
         </BookmarkContext.Provider>
       </Router>
